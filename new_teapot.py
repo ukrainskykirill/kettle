@@ -63,7 +63,7 @@ class Teapot:
             self.state = 'off'
             print(f'состояние чайника - {self.state}')
 
-    def temp_check(self, timer):
+    def temp_check(self, timer: threading.Timer):
         logger.info('kettle working')
         while self.temp_of_water < temp-10:
             if timer.is_alive():
