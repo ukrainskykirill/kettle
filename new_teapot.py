@@ -89,11 +89,11 @@ class Teapot:
 
     def warm_up(self):
         logger.info('kettle will be hot')
-        ts = threading.Timer(temp * time_of_boiling / 100, self.done)
-        th = threading.Thread(target=self.temp_check, args=(ts,))
-        ts.start()
-        th.start()
-        self.stop(ts)
+        thread1 = threading.Timer(temp * time_of_boiling / 100, self.done)
+        thread2 = threading.Thread(target=self.temp_check, args=(thread1,))
+        thread1.start()
+        thread2.start()
+        self.stop(thread1)
 
     def kettle_on(self):
         self.state = 'on'
